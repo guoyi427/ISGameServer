@@ -1,0 +1,86 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "50E47C7EB77D070A1247262FD110B0EBF8C674C9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "50E47C7EB77D070A1247262FD110B0EBF8C674C9" : 9223372036854775807,
+    "DCD994A20FFF69E73D7DE28EB512BBF004934554" : 9223372036854775807,
+    "9197B75B1BC29921D6E3B1CCDC2B258350009F3A" : 9223372036854775807,
+    "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE" : 9223372036854775807,
+    "E2306DAE0C98D148736A05084B6FAB44F03B4909" : 9223372036854775807,
+    "E71C9F673135F52EEF9E6F1B8D0895D4850F2E7F" : 9223372036854775807,
+    "C4127C9B9C8FDF608B532AD72407863CE2797629" : 9223372036854775807,
+    "615FD99B652E80AC2E813EEEE7964BA10A9886D5" : 9223372036854775807,
+    "8193123FDD91141594A2A03D04B2A90AC1927B03" : 9223372036854775807,
+    "6F1260245BD69EFA9A05D126763C86280510C6E1" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A49CADF5-F5D7-4A49-9A75-15356F784F8C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "50E47C7EB77D070A1247262FD110B0EBF8C674C9" : "ISGameServer\/",
+    "DCD994A20FFF69E73D7DE28EB512BBF004934554" : "ISGameServer\/.build\/checkouts\/Perfect-COpenSSL.git--4744624199947727386\/",
+    "9197B75B1BC29921D6E3B1CCDC2B258350009F3A" : "ISGameServer\/.build\/checkouts\/Perfect-HTTP.git--6392294032632002019\/",
+    "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE" : "ISGameServer\/.build\/checkouts\/Perfect-MySQL.git-4976130768219902098\/",
+    "E2306DAE0C98D148736A05084B6FAB44F03B4909" : "ISGameServer\/.build\/checkouts\/PerfectLib.git-3712999737848873669\/",
+    "E71C9F673135F52EEF9E6F1B8D0895D4850F2E7F" : "ISGameServer\/.build\/checkouts\/Perfect-Crypto.git--5196635702121641122\/",
+    "C4127C9B9C8FDF608B532AD72407863CE2797629" : "ISGameServer\/.build\/checkouts\/Perfect-HTTPServer.git--6671958091389663080\/",
+    "615FD99B652E80AC2E813EEEE7964BA10A9886D5" : "ISGameServer\/.build\/checkouts\/Perfect-Thread.git-6541237758607105655\/",
+    "8193123FDD91141594A2A03D04B2A90AC1927B03" : "ISGameServer\/.build\/checkouts\/Perfect-WebSockets.git--5144200636556942371\/",
+    "6F1260245BD69EFA9A05D126763C86280510C6E1" : "ISGameServer\/.build\/checkouts\/Perfect-Net.git-3268755499654502659\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PerfectTemplate",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PerfectTemplate.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/guoyi427\/ISGameServer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "50E47C7EB77D070A1247262FD110B0EBF8C674C9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/Perfect-Thread.git-6541237758607105655",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "615FD99B652E80AC2E813EEEE7964BA10A9886D5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/Perfect-Net.git-3268755499654502659",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6F1260245BD69EFA9A05D126763C86280510C6E1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/Perfect-WebSockets.git--5144200636556942371",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8193123FDD91141594A2A03D04B2A90AC1927B03"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/Perfect-HTTP.git--6392294032632002019",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9197B75B1BC29921D6E3B1CCDC2B258350009F3A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/Perfect-MySQL.git-4976130768219902098",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/Perfect-HTTPServer.git--6671958091389663080",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C4127C9B9C8FDF608B532AD72407863CE2797629"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/Perfect-COpenSSL.git--4744624199947727386",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DCD994A20FFF69E73D7DE28EB512BBF004934554"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/PerfectLib.git-3712999737848873669",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E2306DAE0C98D148736A05084B6FAB44F03B4909"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/kokozu\/Desktop\/Github\/ISGameServer\/.build\/repositories\/Perfect-Crypto.git--5196635702121641122",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E71C9F673135F52EEF9E6F1B8D0895D4850F2E7F"
+    }
+  ]
+}

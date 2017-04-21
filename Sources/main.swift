@@ -70,7 +70,7 @@ let confData = [
 			"port":port1,
 			"routes":[
 				["method":"get", "uri":"/", "handler":handler],
-				["method":"get", "uri":"/queryUser", "handler":LYQueryUser.queryUserHandler],
+				["method":"get", "uri":"/wx_login", "handler":LYQueryUser.login_wx_user],
 				["method":"post", "uri":"/upload", "handler":LYUpload.handler],
 				["method":"get", "uri":"/**", "handler":PerfectHTTPServer.HTTPHandler.staticFiles,
 				 "documentRoot":"./webroot/",
