@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5DE342A21EA9A0E100E271A4 /* MySQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE342A01EA99F5400E271A4 /* MySQLManager.swift */; };
+		5DE7A35C1EAE0588000F7E2B /* SocketHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7A35B1EAE0588000F7E2B /* SocketHandle.swift */; };
+		5DE7A35D1EAE06DB000F7E2B /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7A35A1EAE03E5000F7E2B /* SocketManager.swift */; };
 		OBJ_1000 /* d2i_pu.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_256 /* d2i_pu.c */; };
 		OBJ_1001 /* des_enc.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_257 /* des_enc.c */; };
 		OBJ_1002 /* des_old.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_258 /* des_old.c */; };
@@ -1153,6 +1155,8 @@
 
 /* Begin PBXFileReference section */
 		5DE342A01EA99F5400E271A4 /* MySQLManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySQLManager.swift; sourceTree = "<group>"; };
+		5DE7A35A1EAE03E5000F7E2B /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		5DE7A35B1EAE0588000F7E2B /* SocketHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHandle.swift; sourceTree = "<group>"; };
 		OBJ_10 /* LYUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LYUpload.swift; sourceTree = "<group>"; };
 		OBJ_100 /* a_sign.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_sign.c; sourceTree = "<group>"; };
 		OBJ_101 /* a_strex.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_strex.c; sourceTree = "<group>"; };
@@ -2060,6 +2064,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DE7A3591EAE03E5000F7E2B /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				5DE7A35B1EAE0588000F7E2B /* SocketHandle.swift */,
+				5DE7A35A1EAE03E5000F7E2B /* SocketManager.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 		OBJ_12 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2245,6 +2258,7 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5DE7A3591EAE03E5000F7E2B /* Socket */,
 				OBJ_8 /* LYQueryUser.swift */,
 				OBJ_10 /* LYUpload.swift */,
 				OBJ_11 /* main.swift */,
@@ -3457,6 +3471,8 @@
 				OBJ_1691 /* LYQueryUser.swift in Sources */,
 				5DE342A21EA9A0E100E271A4 /* MySQLManager.swift in Sources */,
 				OBJ_1693 /* LYUpload.swift in Sources */,
+				5DE7A35C1EAE0588000F7E2B /* SocketHandle.swift in Sources */,
+				5DE7A35D1EAE06DB000F7E2B /* SocketManager.swift in Sources */,
 				OBJ_1694 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,7 @@ class LYQueryUser {
             let wx_id = request.param(name: "wx_id")
             let name = request.param(name: "name")
             
-            guard let n_wx_id = wx_id else {
+            guard let n_wx_id = wx_id, n_wx_id.characters.count > 0 else {
                 let msg = "缺少参数，wx_id"
                 response.appendBody(string: msg)
                 response.completed()
@@ -53,7 +53,7 @@ class LYQueryUser {
                 }
                 
                 //  登陆成功
-                let bodyDic = ["token":insertResult.token]
+                let bodyDic = ["token":insertResult.token, "uid":insertResult.uid]
                 do {
                     let bodyStr = try bodyDic.jsonEncodedString()
                     response.appendBody(string: bodyStr)

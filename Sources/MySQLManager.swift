@@ -41,6 +41,21 @@ class MySQLManager {
         _mysql.close()
     }
     
+}
+
+extension MySQLManager {
+    func calculateToken(uid:String) -> String {
+        let token = uid
+        //  更新数据库中的token
+        
+        return token
+    }
+}
+
+//MARK: Login Methods
+extension MySQLManager {
+    //  表结构   uid, wx_id, mobile, name, account, password, token
+    
     /// 查询微信id对应的用户信息
     ///
     /// - Parameter wx_id: 微信id
@@ -59,14 +74,14 @@ class MySQLManager {
         return resultDic
     }
     
-    func insert_wx_user(wx_id:String, name:String) -> (succes:Bool, token:String) {
+    func insert_wx_user(wx_id:String, name:String) -> (succes:Bool, token:String, uid: String) {
         var para = ["name":name, "wx_id":wx_id]
         
         //  max uid
         let sql = "select MAX(uid) from user_account"
         guard let max_uid_result = mysqlStatement(sql: sql).mysqlResult else {
             debugPrint("查询最大uid失败")
-            return (false,"")
+            return (false, "", "")
         }
         var max_uid = ""
         
@@ -78,11 +93,11 @@ class MySQLManager {
             }
             max_uid = uidString
         }
-
+        
         guard let max_uid_int = Int64(max_uid), max_uid.characters.count > 0 else {
             let msg = "max id error"
             debugPrint(msg)
-            return (false, "")
+            return (false, "", "")
         }
         
         let uid = String(max_uid_int+1)
@@ -90,19 +105,7 @@ class MySQLManager {
         para["uid"] = uid
         para["token"] = token
         
-        return (insert(tableName: "user_account", para: para).success, token)
-    }
-    
-    
-    
-}
-
-extension MySQLManager {
-    func calculateToken(uid:String) -> String {
-        let token = uid
-        //  更新数据库中的token
-        
-        return token
+        return (insert(tableName: "user_account", para: para).success, token, uid)
     }
 }
 
@@ -154,5 +157,34 @@ extension MySQLManager {
         let sqlStr = "select \(find) from \(tableName) where \(para)"
         
         return mysqlStatement(sql: sqlStr)
+    }
+    
+    func update(tableName: String, para: [String:String], wherePara: [String:String]?) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+        var left:String = "update \(tableName) set "
+        var right:String = ""
+        
+        var fristAppendLeft = true
+        for key in para.keys {
+            if fristAppendLeft {
+                left.append("\(key) = '\(para[key]!)'")
+            } else {
+                left.append(", \(key) = '\(para[key]!)'")
+            }
+            fristAppendLeft = false
+        }
+        
+        var fristAppendRight = true
+        if let n_where = wherePara {
+            right.append("where")
+            for key in n_where.keys {
+                if fristAppendRight {
+                    right.append("\(key) = '\(para[key]!)'")
+                } else {
+                    right.append(", \(key) = '\(para[key]!)'")
+                }
+                fristAppendRight = false
+            }
+        }
+        return mysqlStatement(sql: left + right)
     }
 }

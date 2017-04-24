@@ -93,7 +93,21 @@ let confData = [
 				["method":"get", "uri":"/**", "handler":PerfectHTTPServer.HTTPHandler.redirect,
 				 "base":"http://localhost:\(port1)"]
 			]
-		]
+		],
+		[
+            "name":"chat",
+            "port":8282,
+            "routes":[
+                ["method":"get", "uri":"/chat", "handler":chatHandler]
+            ],
+            "filters":[
+                [
+                    "type":"response",
+                    "priority":"high",
+                    "name":PerfectHTTPServer.HTTPFilter.contentCompression,
+                    ]
+            ]
+        ],
 	]
 ]
 
