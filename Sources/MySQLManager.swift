@@ -64,24 +64,25 @@ extension MySQLManager {
         
         var resultDic:[String:String] = [:]
         
-        if let result = query(tableName: "user_account", find: "uid, token", para: "wx_id='\(wx_id)'").mysqlResult {
+        if let result = query(tableName: "user_account", find: "uid, token, name", wherePara: "wx_id='\(wx_id)'").mysqlResult {
             result.forEachRow(callback: { (row) in
                 resultDic["uid"] = row[0]
                 resultDic["token"] = row[1]
+                resultDic["name"] = row[2]
             })
         }
         
         return resultDic
     }
     
-    func insert_wx_user(wx_id:String, name:String) -> (succes:Bool, token:String, uid: String) {
+    func insert_wx_user(wx_id:String, name:String) -> (succes:Bool, token:String, uid: String, name: String) {
         var para = ["name":name, "wx_id":wx_id]
         
         //  max uid
         let sql = "select MAX(uid) from user_account"
         guard let max_uid_result = mysqlStatement(sql: sql).mysqlResult else {
             debugPrint("查询最大uid失败")
-            return (false, "", "")
+            return (false, "", "", "")
         }
         var max_uid = ""
         
@@ -97,7 +98,7 @@ extension MySQLManager {
         guard let max_uid_int = Int64(max_uid), max_uid.characters.count > 0 else {
             let msg = "max id error"
             debugPrint(msg)
-            return (false, "", "")
+            return (false, "", "", "")
         }
         
         let uid = String(max_uid_int+1)
@@ -105,7 +106,7 @@ extension MySQLManager {
         para["uid"] = uid
         para["token"] = token
         
-        return (insert(tableName: "user_account", para: para).success, token, uid)
+        return (insert(tableName: "user_account", para: para).success, token, uid, name)
     }
 }
 
@@ -153,8 +154,8 @@ extension MySQLManager {
         return mysqlStatement(sql: sqlStr)
     }
     
-    func query(tableName: String, find: String, para: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
-        let sqlStr = "select \(find) from \(tableName) where \(para)"
+    func query(tableName: String, find: String, wherePara: String) -> (success: Bool, mysqlResult: MySQL.Results?, errorMsg: String) {
+        let sqlStr = "select \(find) from \(tableName) where \(wherePara)"
         
         return mysqlStatement(sql: sqlStr)
     }

@@ -53,7 +53,7 @@ class LYQueryUser {
                 }
                 
                 //  登陆成功
-                let bodyDic = ["token":insertResult.token, "uid":insertResult.uid]
+                let bodyDic = ["token":insertResult.token, "uid":insertResult.uid, "name":insertResult.name]
                 do {
                     let bodyStr = try bodyDic.jsonEncodedString()
                     response.appendBody(string: bodyStr)
