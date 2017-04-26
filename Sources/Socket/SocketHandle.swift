@@ -92,6 +92,12 @@ class ChatHandler: WebSocketSessionHandler {
                 case .OutRoom:
                     SocketManager.instance.outRoom(json: dic, socket: socket)
                     break
+                case .QueryRoomList:
+                    SocketManager.instance.queryRoomList(socket: socket)
+                    break
+                case .Group:
+                    SocketManager.instance.groupChat(json: dic, socket: socket)
+                    break
                 default:
                     break
                 }

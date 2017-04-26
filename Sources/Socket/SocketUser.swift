@@ -44,4 +44,8 @@ class SocketUser: Hashable {
     public static func ==(lhs: SocketUser, rhs: SocketUser) -> Bool {
         return lhs.uid == rhs.uid
     }
+    
+    func jsonDic() -> [String: String] {
+        return ["uid": uid, "name": name]
+    }
 }

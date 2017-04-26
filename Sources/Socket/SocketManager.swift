@@ -43,7 +43,7 @@ class SocketManager {
         //  从登陆用户中获取接收方的socket对象
         if let toSocket = _chats[toUserSocket] {
             let messageDic:[String:Any] = ["uid": uid, "message": message, "to": to]
-            sendMessage(json: messageDic, socket: toSocket)
+            sendJSON(socket: toSocket, json: messageDic)
         }
     }
     
@@ -56,7 +56,7 @@ class SocketManager {
         
         //  发送所有在线用户的id给发消息方
         let messageDic = ["userList": userList]
-        sendMessage(json: messageDic, socket: socket)
+        sendJSON(socket: socket, json: messageDic)
     }
 }
 
@@ -73,6 +73,14 @@ extension SocketManager {
     func outRoom(json: [String:Any], socket: WebSocket) {
         SocketRoomManager.instance.outRoom(json: json, socket: socket)
     }
+    
+    func queryRoomList(socket: WebSocket) {
+        SocketRoomManager.instance.queryRoomList(socket: socket)
+    }
+    
+    func groupChat(json: [String: Any], socket: WebSocket) {
+        SocketRoomManager.instance.groupChat(json: json, socket: socket)
+    }
 }
 
 //MARK: Private Methods
@@ -88,7 +96,7 @@ extension SocketManager {
         }
     }
     
-    fileprivate func sendMessage(socket:WebSocket, json:[String:Any]) {
+    func sendJSON(socket:WebSocket, json:[String:Any]) {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
             let bytes = [UInt8](jsonData)
