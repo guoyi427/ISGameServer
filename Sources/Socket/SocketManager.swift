@@ -42,7 +42,9 @@ class SocketManager {
         
         //  从登陆用户中获取接收方的socket对象
         if let toSocket = _chats[toUserSocket] {
-            let messageDic:[String:Any] = ["uid": uid, "message": message, "to": to]
+            let messageDic:[String:Any] = ["uid": uid, "message": message,
+                                           "to": to,
+                                           "code":SocketCode.Chat.rawValue]
             sendJSON(socket: toSocket, json: messageDic)
         }
     }
@@ -55,7 +57,8 @@ class SocketManager {
         }
         
         //  发送所有在线用户的id给发消息方
-        let messageDic = ["userList": userList]
+        let messageDic:[String:Any] = ["message": userList,
+                                       "code":SocketCode.QueryUserList.rawValue]
         sendJSON(socket: socket, json: messageDic)
     }
 }

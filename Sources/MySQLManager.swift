@@ -13,7 +13,7 @@ class MySQLManager {
     fileprivate let Host = "127.0.0.1"
     fileprivate let Account = "guoyi"
     fileprivate let Password = "gy1111"
-    fileprivate let Port:UInt32 = 3307
+    fileprivate let Port:UInt32 = 3306
     fileprivate let UserDBName = "User"
     
     static let instance = MySQLManager()
@@ -80,20 +80,20 @@ extension MySQLManager {
         
         //  max uid
         let sql = "select MAX(uid) from user_account"
-        guard let max_uid_result = mysqlStatement(sql: sql).mysqlResult else {
-            debugPrint("查询最大uid失败")
-            return (false, "", "", "")
-        }
-        var max_uid = ""
         
-        max_uid_result.forEachRow { (row) in
-            guard let uidString = row[0] else {
-                let msg = "查询最大id失败"
-                debugPrint(msg)
-                return
+        var max_uid = "10000"
+        
+        if let max_uid_result = mysqlStatement(sql: sql).mysqlResult {
+            max_uid_result.forEachRow { (row) in
+                guard let uidString = row[0] else {
+                    let msg = "查询最大id失败"
+                    debugPrint(msg)
+                    return
+                }
+                max_uid = uidString
             }
-            max_uid = uidString
         }
+        
         
         guard let max_uid_int = Int64(max_uid), max_uid.characters.count > 0 else {
             let msg = "max id error"

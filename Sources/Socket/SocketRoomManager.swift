@@ -21,10 +21,12 @@ class SocketRoomManager {
             debugPrint("creat room error uid empty")
             return
         }
+        
         if let room = rooms[uid] {
             debugPrint("room exist\(room.roomID)")
-            return
+            rooms.removeValue(forKey: uid)
         }
+        
         let room = SocketRoom(uid: uid)
         rooms.updateValue(room, forKey: uid)
         
