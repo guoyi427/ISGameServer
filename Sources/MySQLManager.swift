@@ -13,7 +13,7 @@ class MySQLManager {
     fileprivate let Host = "127.0.0.1"
     fileprivate let Account = "guoyi"
     fileprivate let Password = "gy1111"
-    fileprivate let Port:UInt32 = 3306
+    fileprivate let Port:UInt32 = 3307
     fileprivate let UserDBName = "User"
     
     static let instance = MySQLManager()

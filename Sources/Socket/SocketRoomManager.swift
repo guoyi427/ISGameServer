@@ -17,21 +17,33 @@ class SocketRoomManager {
     
     /// 创建房间
     func creatRoom(json: [String:Any], socket: WebSocket) {
-        guard let uid = json["uid"] as? String else {
+        guard let uid = json["uid"] as? String , let name = json["name"] as? String else {
             debugPrint("creat room error uid empty")
             return
         }
         
-        if let room = rooms[uid] {
-            debugPrint("room exist\(room.roomID)")
-            rooms.removeValue(forKey: uid)
+        //  生成 room id
+        let roomID = uid + "\(arc4random()%100)"
+        
+        //  判断房间是否已经存在
+        if let room = rooms[roomID] {
+            debugPrint("room exist\(room.room_id)")
+            inRoom(json: json, socket: socket)
+            return
         }
         
-        let room = SocketRoom(uid: uid)
-        rooms.updateValue(room, forKey: uid)
+        //  创建房间
+        let room = SocketRoom(roomID: roomID)
+        rooms.updateValue(room, forKey: roomID)
+        
+        //  将自己 加入房间
+        let userModel = SocketUser(_uid: uid, _name: name)
+        room.add(userModel: userModel)
         
         //  创建成功
-        SocketManager.instance.sendJSON(socket: socket, json: ["message":"creatRoomSuccess", "code":SocketCode.CreatRoom.rawValue])
+        SocketManager.instance.sendJSON(socket: socket,
+                                        json: ["message":["room_id":room.room_id],
+                                               "code":SocketCode.CreatRoom.rawValue])
     }
     
     /// 加入房间
@@ -50,7 +62,7 @@ class SocketRoomManager {
         room.add(userModel: userModel)
         
         //  加入完成
-        SocketManager.instance.sendJSON(socket: socket, json: ["message":"in room success", "code":SocketCode.InRoom.rawValue])
+        SocketManager.instance.sendJSON(socket: socket, json: ["message":["room_id":room.room_id], "code":SocketCode.InRoom.rawValue])
     }
     
     /// 退出房间
@@ -68,15 +80,20 @@ class SocketRoomManager {
         let userModel = SocketUser(_uid: uid, _name: name)
         room.remove(userModel: userModel)
         
+        //  判断是否需要销毁房间
+        if room.chats.count == 0 {
+            rooms.removeValue(forKey: room.room_id)
+        }
+        
         //  退出房间完成
-        SocketManager.instance.sendJSON(socket: socket, json: ["message":"out room success", "code":SocketCode.OutRoom.rawValue])
+        SocketManager.instance.sendJSON(socket: socket, json: ["message":["room_id":room.room_id], "code":SocketCode.OutRoom.rawValue])
     }
     
     /// 查询房间列表
     func queryRoomList(socket:WebSocket) {
         var roomsArray:[[String:Any]] = []
         for roomDic in rooms {
-            var roomInfoDic:[String:Any] = ["room_id": roomDic.value.roomID,
+            var roomInfoDic:[String:Any] = ["room_id": roomDic.value.room_id,
                                "uid": roomDic.key]
             var userList:[[String:String]] = []
             for userInfo in roomDic.value.chats {
@@ -91,7 +108,7 @@ class SocketRoomManager {
     
     /// 群聊天
     func groupChat(json:[String:Any], socket: WebSocket) {
-        guard let roomID = json["room_id"] as? String, let message = json["message"] else {
+        guard let roomID = json["room_id"] as? String, let message = json["message"], let uid = json["uid"] as? String else {
             debugPrint("group chat error, para error")
             return
         }
@@ -104,7 +121,9 @@ class SocketRoomManager {
         DispatchQueue.global().async {
             for toUser in room.chats.values {
                 if let toUserSocket = SocketManager.instance._chats[toUser] {
-                    SocketManager.instance.sendJSON(socket: toUserSocket, json: ["message":message, "code":SocketCode.Group.rawValue])
+                    SocketManager.instance.sendJSON(socket: toUserSocket, json: ["message":message,
+                                                                                 "code":SocketCode.Group.rawValue,
+                                                                                 "uid":uid])
                 }
             }
         }
@@ -113,10 +132,10 @@ class SocketRoomManager {
 
 class SocketRoom {
     var chats = [String:SocketUser]()
-    var roomID = ""
+    var room_id = ""
     
-    init(uid:String) {
-        roomID = uid
+    init(roomID:String) {
+        room_id = roomID
     }
     
     func add(userModel:SocketUser) {
