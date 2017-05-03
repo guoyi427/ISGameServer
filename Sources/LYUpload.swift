@@ -38,8 +38,9 @@ class LYUpload {
                     do {
                         let newFile = try tempFile?.moveTo(path: fileDir.path + upload.fileName, overWrite: true)
                         if let file = newFile {
-                            print(file.path)
-                            pathList.append(file.path)
+                            let resultPath = "/Image/\(upload.fileName)"
+                            print(file.path, resultPath)
+                            pathList.append(resultPath)
                         }
                     } catch {
                         print(error)

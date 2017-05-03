@@ -2267,8 +2267,8 @@
 				5DE7A3591EAE03E5000F7E2B /* Socket */,
 				OBJ_8 /* LYQueryUser.swift */,
 				OBJ_10 /* LYUpload.swift */,
-				OBJ_11 /* main.swift */,
 				5DE342A01EA99F5400E271A4 /* MySQLManager.swift */,
+				OBJ_11 /* main.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
